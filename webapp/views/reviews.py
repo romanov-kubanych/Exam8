@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
-from django.views.generic import CreateView, UpdateView, DeleteView
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 
 from webapp.forms import ReviewForm
 from webapp.models import Review, Product
@@ -52,3 +52,15 @@ class ReviewDeleteView(PermissionRequiredMixin, DeleteView):
     def get_success_url(self):
         return reverse('webapp:product_view', kwargs={'pk': self.object.product.id})
 
+
+class ReviewView(PermissionRequiredMixin, ListView):
+    model = Review
+    template_name = 'reviews/index.html'
+    context_object_name = 'reviews'
+    permission_required = 'webapp.can_view_false_reviews'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        reviews = Review.objects.filter(status=False).order_by('-updated_at')
+        context['reviews'] = reviews
+        return context

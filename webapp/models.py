@@ -60,3 +60,6 @@ class Review(models.Model):
         db_table = 'Reviews'
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
+        permissions = [
+            ('can_view_false_reviews', 'Может видеть все не модерированные отзывы')
+        ]
