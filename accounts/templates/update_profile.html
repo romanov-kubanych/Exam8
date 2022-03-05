@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form method="post">
+        {% include 'partial/form.html' with button_text='Сохранить'%}
+    </form>
+    <a class="my-3 btn btn-danger w-100" href="{% url "accounts:detail" user.pk %}">Отмена</a>
+{% endblock content %}

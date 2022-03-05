@@ -2,9 +2,9 @@ from django.contrib.auth import get_user_model, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.urls import reverse
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView
 
-from accounts.forms import MyUserCreationForm
+from accounts.forms import MyUserCreationForm, UserUpdateForm
 
 User = get_user_model()
 
@@ -37,3 +37,17 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         context = super().get_context_data(**kwargs)
         # context["projects"] = self.object.projects_user.all()
         return context
+
+
+class UpdateUserView(LoginRequiredMixin, UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    template_name = "update_profile.html"
+    context_object_name = "user_object"
+
+    def get_success_url(self):
+        return reverse("accounts:detail", kwargs={"pk": self.request.user.pk})
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
