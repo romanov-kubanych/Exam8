@@ -47,7 +47,7 @@ class Review(BaseModel):
     status = models.BooleanField(verbose_name='Статус', default=False)
 
     def __str__(self):
-        return f'{self.pk}.{self.grade} - {self.author.name}'
+        return f'{self.pk}.{self.grade} - {self.author.username}'
 
     class Meta:
         db_table = 'Reviews'
