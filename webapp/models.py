@@ -26,6 +26,16 @@ class Product(models.Model):
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
 
+    def average(self):
+        reviews = self.reviews.filter(status=True)
+        sum = 0
+        if reviews:
+            for review in reviews:
+                sum += review.grade
+            return round(sum / len(reviews), 2)
+        else:
+            return 0
+
 
 class Review(models.Model):
     author = models.ForeignKey(User,

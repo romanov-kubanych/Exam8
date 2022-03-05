@@ -15,10 +15,10 @@
                 <a class="nav-link text-danger" href={% url 'webapp:product_delete' product.pk %}>Удалить товар</a>
             </li>
     {#    {% endif %}#}
-    {#    {% if perms.webapp.add_task%}#}
-    {#        <li class="nav-item">#}
-    {#            <a class="nav-link text-success" href={% url 'webapp:create_view' project.pk %}>Создать задачу</a>#}
-    {#        </li>#}
+{#        {% if perms.webapp.add_task%}#}
+            <li class="nav-item">
+                <a class="nav-link text-success" href={% url 'webapp:review_create' product.pk %}>Добавить отзыв</a>
+            </li>
     {#    {% endif %}#}
 {% endblock %}
 
@@ -31,6 +31,7 @@
             <h6>Название: {{ product.name }}</h6>
             <h6>Категория: {{ product.category }}</h6>
             <p>Описание: {{ product.description }}</p>
+            <p>Cредняя оценка: {{ product.average }}</p>
             {% if product.picture %}
                 <img class="avatar" src="{{ product.picture.url }}" width="250" height="250" alt="user picture">
             {% else %}
@@ -50,9 +51,12 @@
                                 <div class="card h-100">
                                     <div class="card-body">
                                         <h5 class="card-title">Отзыв № {{ review.id }}</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Автор: {{ review.author.first_name }}</h6>
+                                        <h6 class="card-subtitle mb-2 text-muted">Почта: {{ review.author.email }}</h6>
                                         <h6 class="card-subtitle mb-2 text-muted">Текст: {{ review.text }}</h6>
                                         <h6 class="card-subtitle mb-2 text-muted">Оценка: {{ review.grade }}</h6>
-                                        <a href="#" class="card-link">Подробнее...</a>
+                                        <a href="{% url "webapp:review_update" review.pk %}" class="card-link">Редактировать</a>
+                                        <a href="{% url "webapp:review_delete" review.pk %}" class="card-link">Удалить</a>
                                     </div>
                                 </div>
                             </div>
