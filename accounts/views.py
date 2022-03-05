@@ -1,7 +1,8 @@
 from django.contrib.auth import get_user_model, login
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.urls import reverse
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 from accounts.forms import MyUserCreationForm
 
@@ -26,3 +27,13 @@ class RegisterView(CreateView):
             next_url = reverse('webapp:product_index')
         return next_url
 
+
+class UserDetailView(LoginRequiredMixin, DetailView):
+    model = User
+    template_name = 'user_detail.html'
+    context_object_name = 'user_obj'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # context["projects"] = self.object.projects_user.all()
+        return context

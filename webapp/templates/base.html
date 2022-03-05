@@ -44,9 +44,9 @@
 {#                            <a class="nav-link" href={% url 'accounts:users' %}>Все пользователи</a>#}
 {#                        </li>#}
 {#                    {% endif %}#}
-{#                    <li class="nav-item">#}
-{#                        <a class="nav-link" href="{% url 'accounts:detail' user.pk %}">Привет {{ user.username }}!</a>#}
-{#                    </li>#}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:detail' user.pk %}">Привет {{ user.username }}!</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href={% url 'accounts:logout' %}?next={{ request.get_full_path }}>Выход</a>
                     </li>
