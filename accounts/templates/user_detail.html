@@ -26,8 +26,8 @@
                         <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title">Отзыв № {{ review.id }}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Автор: {{ review.author.first_name }}</h6>
-                                <h6 class="card-subtitle mb-2 text-muted">Почта: {{ review.author.email }}</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">Автор: <a href="{% url 'accounts:detail' review.author.id %}">{{ review.author.first_name }}</a></h6>
+                                <h6 class="card-subtitle mb-2 text-muted">Почта: <a href="{% url 'accounts:detail' review.author.id %}">{{ review.author.email }}</a></h6>
                                 <h6 class="card-subtitle mb-2 text-muted">Текст: {{ review.text }}</h6>
                                 <h6 class="card-subtitle mb-2 text-muted">Оценка: {{ review.grade }}</h6>
                                 <a href="{% url "webapp:review_update" review.pk %}" class="card-link">Редактировать</a>

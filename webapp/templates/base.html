@@ -33,11 +33,11 @@
                            href={% url 'accounts:create' %}?next={{ request.get_full_path }}>Регистрация</a>
                     </li>
                 {% else %}
-{#                    {% if perms.webapp.add_project %}#}
+                    {% if perms.webapp.add_product %}
                         <li class="nav-item">
                             <a class="nav-link" href={% url 'webapp:product_create' %}>Создать товар</a>
                         </li>
-{#                    {% endif %}#}
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'accounts:detail' user.pk %}">Привет {{ user.username }}!</a>
                     </li>
