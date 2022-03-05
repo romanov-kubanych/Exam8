@@ -2,11 +2,6 @@ from django.contrib.auth import get_user_model
 from django.db import models
 
 
-class BaseModel(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
-    updated_at = models.DateTimeField(auto_now=True, verbose_name="Время обновления")
-
-
 User = get_user_model()
 STATUS_CHOICES = [('other', 'Разное'), ('smartphone', 'Смартфон'), ('notebook', 'Ноутбук'), ('tv', 'Телевизор')]
 
@@ -32,7 +27,7 @@ class Product(models.Model):
         verbose_name_plural = 'Товары'
 
 
-class Review(BaseModel):
+class Review(models.Model):
     author = models.ForeignKey(User,
                                on_delete=models.CASCADE,
                                default=1,
@@ -45,6 +40,8 @@ class Review(BaseModel):
     text = models.TextField(max_length=2000, verbose_name='Текст отзыва')
     grade = models.IntegerField(verbose_name='Оценка')
     status = models.BooleanField(verbose_name='Статус', default=False)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Время обновления")
 
     def __str__(self):
         return f'{self.pk}.{self.grade} - {self.author.username}'

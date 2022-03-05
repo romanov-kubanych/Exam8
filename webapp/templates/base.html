@@ -34,14 +34,9 @@
                     </li>
                 {% else %}
 {#                    {% if perms.webapp.add_project %}#}
-{#                        <li class="nav-item">#}
-{#                            <a class="nav-link" href={% url 'webapp:project_create' %}>Создать проект</a>#}
-{#                        </li>#}
-{#                    {% endif %}#}
-{#                    {% if perms.auth.view_user %}#}
-{#                        <li class="nav-item">#}
-{#                            <a class="nav-link" href={% url 'accounts:users' %}>Все пользователи</a>#}
-{#                        </li>#}
+                        <li class="nav-item">
+                            <a class="nav-link" href={% url 'webapp:product_create' %}>Создать товар</a>
+                        </li>
 {#                    {% endif %}#}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'accounts:detail' user.pk %}">Привет {{ user.username }}!</a>

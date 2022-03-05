@@ -5,15 +5,15 @@
 {% endblock %}
 
 {% block nav %}
-    {#    {% if perms.webapp.change_project %}#}
-    {#        <li class="nav-item">#}
-    {#            <a class="nav-link" href={% url 'webapp:project_update' project.pk %}>Изменить проект</a>#}
-    {#        </li>#}
-    {#    {% endif %}#}
+{#        {% if perms.webapp.change_project %}#}
+            <li class="nav-item">
+                <a class="nav-link" href={% url 'webapp:product_update' product.pk %}>Изменить товар</a>
+            </li>
+{#        {% endif %}#}
     {#    {% if perms.webapp.delete_project %}#}
-    {#        <li class="nav-item">#}
-    {#            <a class="nav-link text-danger" href={% url 'webapp:project_delete' project.pk %}>Удалить проект</a>#}
-    {#        </li>#}
+            <li class="nav-item">
+                <a class="nav-link text-danger" href={% url 'webapp:product_delete' product.pk %}>Удалить товар</a>
+            </li>
     {#    {% endif %}#}
     {#    {% if perms.webapp.add_task%}#}
     {#        <li class="nav-item">#}
@@ -39,29 +39,27 @@
                      width="250" height="250" alt="user picture">
             {% endif %}
         </div>
-        {#        <div class="alert alert-danger" role="alert">#}
-        {#            <h6>Текущие пользователи:</h6>#}
-        {#            {% for user in project.users.all %}#}
-        {#                <p class="mb-0">{{ forloop.counter }}. {{ user }}</p>#}
-        {#            {% endfor %}#}
-        {#        </div>#}
-        {#        <div class="alert alert-light" role="alert">#}
-        {#            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 justify-content-center">#}
-        {#                {% for task in project.tasks.all %}#}
-        {#                    <div class="col my-2">#}
-        {#                        <div class="card h-100">#}
-        {#                            <div class="card-body">#}
-        {#                                <h5 class="card-title">Задача № {{ task.id }}</h5>#}
-        {#                                <h6 class="card-subtitle mb-2 text-muted">Статус: {{ task.status }}</h6>#}
-        {#                                <h6 class="card-subtitle mb-2 text-muted">Тип: {{ task.type }}</h6>#}
-        {#                                <p class="card-text">{{ task.title }}</p>#}
-        {#                                <a href="{% url 'webapp:task_view' task.pk %}" class="card-link">Подробнее...</a>#}
-        {#                            </div>#}
-        {#                        </div>#}
-        {#                    </div>#}
-        {#                {% endfor %}#}
-        {#            </div>#}
-        {#        </div>#}
+                <div class="text-center my-4" role="alert">
+                    <h2>Отзывы товара</h2>
+                </div>
+                <div class="alert alert-light" role="alert">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 justify-content-center">
+                        {% for review in product.reviews.all %}
+                            {% if review.status == True %}
+                            <div class="col my-2">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Отзыв № {{ review.id }}</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Текст: {{ review.text }}</h6>
+                                        <h6 class="card-subtitle mb-2 text-muted">Оценка: {{ review.grade }}</h6>
+                                        <a href="#" class="card-link">Подробнее...</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
 
     </div>
 {% endblock %}
