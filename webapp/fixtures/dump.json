@@ -1,0 +1,110 @@
+[
+{
+  "model": "webapp.product",
+  "pk": 1,
+  "fields": {
+    "name": "�����1",
+    "category": "smartphone",
+    "description": "�����12",
+    "picture": "product_pics/dev.png"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 2,
+  "fields": {
+    "name": "�����2",
+    "category": "notebook",
+    "description": "�����2",
+    "picture": ""
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 3,
+  "fields": {
+    "name": "�����3",
+    "category": "tv",
+    "description": "�����3",
+    "picture": "product_pics/lead.png"
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 1,
+  "fields": {
+    "author": 2,
+    "product": 1,
+    "text": "�����1",
+    "grade": 3,
+    "status": true,
+    "created_at": "2022-03-05T08:59:30.326Z",
+    "updated_at": "2022-03-05T10:13:19.210Z"
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 2,
+  "fields": {
+    "author": 2,
+    "product": 1,
+    "text": "123",
+    "grade": 1,
+    "status": true,
+    "created_at": "2022-03-05T09:00:14.865Z",
+    "updated_at": "2022-03-05T10:13:12.658Z"
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 3,
+  "fields": {
+    "author": 1,
+    "product": 1,
+    "text": "123",
+    "grade": 4,
+    "status": true,
+    "created_at": "2022-03-05T09:39:38.164Z",
+    "updated_at": "2022-03-05T10:06:38.603Z"
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 7,
+  "fields": {
+    "author": 1,
+    "product": 2,
+    "text": "���������",
+    "grade": 3,
+    "status": true,
+    "created_at": "2022-03-05T10:43:18.555Z",
+    "updated_at": "2022-03-05T10:43:18.555Z"
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 8,
+  "fields": {
+    "author": 3,
+    "product": 1,
+    "text": "test2",
+    "grade": 3,
+    "status": false,
+    "created_at": "2022-03-05T11:17:12.690Z",
+    "updated_at": "2022-03-05T11:20:17.400Z"
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 9,
+  "fields": {
+    "author": 3,
+    "product": 1,
+    "text": "234234",
+    "grade": 3,
+    "status": false,
+    "created_at": "2022-03-05T12:21:34.006Z",
+    "updated_at": "2022-03-05T12:21:34.006Z"
+  }
+}
+]
