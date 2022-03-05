@@ -25,6 +25,32 @@
                 {% block nav %}
 
                 {% endblock %}
+                {% if not user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url 'accounts:login' %}?next={{ request.get_full_path }}>Вход</a>
+                    </li>
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link"#}
+{#                           href={% url 'accounts:create' %}?next={{ request.get_full_path }}>Регистрация</a>#}
+{#                    </li>#}
+                {% else %}
+{#                    {% if perms.webapp.add_project %}#}
+{#                        <li class="nav-item">#}
+{#                            <a class="nav-link" href={% url 'webapp:project_create' %}>Создать проект</a>#}
+{#                        </li>#}
+{#                    {% endif %}#}
+{#                    {% if perms.auth.view_user %}#}
+{#                        <li class="nav-item">#}
+{#                            <a class="nav-link" href={% url 'accounts:users' %}>Все пользователи</a>#}
+{#                        </li>#}
+{#                    {% endif %}#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="{% url 'accounts:detail' user.pk %}">Привет {{ user.username }}!</a>#}
+{#                    </li>#}
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url 'accounts:logout' %}?next={{ request.get_full_path }}>Выход</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>
