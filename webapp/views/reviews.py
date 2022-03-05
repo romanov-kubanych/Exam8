@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 
-from webapp.forms import ReviewForm
+from webapp.forms import ReviewForm, ReviewModerForm
 from webapp.models import Review, Product
 
 
@@ -64,3 +64,17 @@ class ReviewView(PermissionRequiredMixin, ListView):
         reviews = Review.objects.filter(status=False).order_by('-updated_at')
         context['reviews'] = reviews
         return context
+
+
+class ReviewModerUpdateView(PermissionRequiredMixin, UpdateView):
+    model = Review
+    template_name = 'reviews/moder_update.html'
+    form_class = ReviewModerForm
+    permission_required = 'webapp.change_review'
+
+    def has_permission(self):
+        review = get_object_or_404(Review, pk=self.kwargs.get('pk'))
+        return super().has_permission() or self.request.user == review.author
+
+    def get_success_url(self):
+        return reverse('webapp:review_index')

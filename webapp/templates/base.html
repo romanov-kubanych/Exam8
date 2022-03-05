@@ -40,7 +40,7 @@
                     {% endif %}
                     {% if perms.webapp.can_view_false_reviews%}
                         <li class="nav-item">
-                            <a class="nav-link" href={% url 'webapp:review_index' %}>Все отзывы</a>
+                            <a class="nav-link" href={% url 'webapp:review_index' %}>Не модерированные отзывы</a>
                         </li>
                     {% endif %}
                     <li class="nav-item">
